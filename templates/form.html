@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Database</title>
+</head>
+<body>
+    <h2>Search Database by Code</h2>
+    
+    <!-- Form to get the search term -->
+    <form method="POST">
+        <label for="Code">Enter Code:</label>
+        <input type="text" id="Code" name="Code" required><br><br>
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Results:</h2>
+    {% if results %}
+        {% if results == "No matching records found." %}
+            <p>{{ results }}</p>
+        {% else %}
+            <table border="1">
+                <tr>
+                    <th>Code</th>
+                    <th>Date</th>
+                    <th>Approved Volume</th>
+                    <th>Total Volume</th>
+                    <th>Approved %</th>
+                    <th>Slab</th>
+                    
+                </tr>
+                {% for row in results %}
+                <tr>
+                    <td>{{ row['Code'] }}</td>
+                    <td>{{ row['Date'] }}</td>
+                    <td>{{ row['Approved Volume'] }}</td>
+                    <td>{{ row['Total Volume (MTD)'] }}</td>
+                    <td>{{ row['Approved %'] }}</td>
+                    <td>{{ row['Slab'] }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
