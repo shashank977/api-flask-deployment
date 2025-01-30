@@ -7,9 +7,6 @@ import requests
 app = Flask(__name__)
 
 
-
-
-#df = pd.read_excel('/Users/shashank/Desktop/Projects/python/API/sampleData.xlsx')
 df = pd.read_excel('sampleData.xlsx')
 
 
